@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{708592
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clippy.Applications.AssetServer.Test", "Clippy.Applications.AssetServer.Test\Clippy.Applications.AssetServer.Test.csproj", "{714C59AF-A55B-431E-B49A-9C61AE5B6BF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clippy.Applications.AssetServer.SelfHosted", "Clippy.Applications.AssetServer.SelfHosted\Clippy.Applications.AssetServer.SelfHosted.csproj", "{DDA5F38C-68F8-4ECA-92F7-AD8944646F43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{714C59AF-A55B-431E-B49A-9C61AE5B6BF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{714C59AF-A55B-431E-B49A-9C61AE5B6BF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{714C59AF-A55B-431E-B49A-9C61AE5B6BF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDA5F38C-68F8-4ECA-92F7-AD8944646F43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDA5F38C-68F8-4ECA-92F7-AD8944646F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDA5F38C-68F8-4ECA-92F7-AD8944646F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDA5F38C-68F8-4ECA-92F7-AD8944646F43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
