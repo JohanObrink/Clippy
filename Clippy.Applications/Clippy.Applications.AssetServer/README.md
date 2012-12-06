@@ -4,7 +4,7 @@
     @  @       | are rescaling images |
     || ||   <--| for your site.       |
     || ||      | Would you like me to |
-    |\_/|      | you with that?       |
+    |\_/|      | help you with that?  |
     \___/      \______________________/
 
 # Clippy Asset Server
