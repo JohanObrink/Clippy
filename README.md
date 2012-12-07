@@ -7,7 +7,8 @@
     |\_/|      | a little easier.    |
     \___/      \_____________________/
 
-# Clippy is a collection of extensions and helper libs for Microsoft .NET. Clippy contains the following **packages**:
+# Clippy is a collection of extensions and helper libs for Microsoft .NET. 
+Clippy contains the following **packages**:
 
 - [Clippy](https://github.com/24hr/Clippy/tree/master/Clippy)
 - [Clippy.Mvc](https://github.com/24hr/Clippy/tree/master/Clippy.Mvc)

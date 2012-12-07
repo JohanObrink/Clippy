@@ -85,4 +85,8 @@ Provides human readable formatting to file sizes.
 1024.ToKibiFileSize(); // => "1 KiB"
 // provide custom formatting
 2000000.ToKibiFileSize("0.0000"); // "1.9073 MiB"
+// also available on FileInfo
+var file = new FileInfo(someFilePath);
+file.KibiFileSize();
+file.KiloFileSize();
 ```

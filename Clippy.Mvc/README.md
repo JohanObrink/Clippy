@@ -21,7 +21,7 @@ install from [Nuget](https://www.nuget.org)
 
 ### Action Results
 **JsonOrJsonpResult** is a substitute for [JsonResult](http://msdn.microsoft.com/en-us/library/system.web.mvc.jsonresult(v=vs.108.aspx) 
-that automatically renders as [JSONP](http://en.wikipedia.org/wiki/JSONP) if the request contains the parameter *callbac*.
+that automatically renders as [JSONP](http://en.wikipedia.org/wiki/JSONP) if the request contains the parameter *callback*. 
 
 It also uses [Json.Net](http://james.newtonking.com/pages/json-net.aspx) for serialization and lets you tap into the serialization 
 process.
