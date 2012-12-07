@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\Extensions\ImageRequestExtensions\ToImageRequestData.cs" />
+    <Compile Include="UnitTests\Extensions\ImageRequestExtensions\ToUrl.cs" />
     <Compile Include="UnitTests\Extensions\MediaExtensions\AbsoluteMediaPath.cs" />
     <Compile Include="UnitTests\Extensions\MediaExtensions\MimeType.cs" />
     <Compile Include="UnitTests\Extensions\MediaExtensions\RemoveQuery.cs" />
