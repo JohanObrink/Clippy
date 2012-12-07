@@ -1,18 +1,27 @@
-﻿using Nancy;
+﻿using Clippy.Applications.AssetServer.Infrastructure;
+using Nancy;
+using Nancy.Responses;
 using System;
 
 namespace Clippy.Applications.AssetServer.Services
 {
-    public class ImageHandler : IResourceHandler
+    public class ImageHandler : StaticResourceHandler
     {
+        
+
         /// <summary>
         /// Processes the path and query and returns the corresponding image resource
         /// </summary>
         /// <param name="pathAndQuery"></param>
         /// <returns></returns>
-        public Response GetResource(string pathAndQuery)
+        public override Response GetResource(string pathAndQuery)
         {
-            throw new NotImplementedException();
+            var imageData = AssetServerConfiguration.ImageDataRegex.Match(pathAndQuery);
+
+            if (!imageData.Success)
+                return new TextResponse("Bad Url Format") { StatusCode = HttpStatusCode.BadRequest };
+
+            return new Response();
         }
 
         /// <summary>
@@ -21,7 +30,7 @@ namespace Clippy.Applications.AssetServer.Services
         /// <param name="path"></param>
         /// <param name="file"></param>
         /// <returns></returns>
-        public Response SaveResource(string path, HttpFile file)
+        public override Response SaveResource(string path, HttpFile file)
         {
             throw new NotImplementedException();
         }

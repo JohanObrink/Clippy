@@ -66,6 +66,7 @@
     <Compile Include="UnitTests\Extensions\MediaExtensions\AbsoluteMediaPath.cs" />
     <Compile Include="UnitTests\Extensions\MediaExtensions\MimeType.cs" />
     <Compile Include="UnitTests\Extensions\MediaExtensions\RemoveQuery.cs" />
+    <Compile Include="UnitTests\Infrastructure\AssetServerConfiguration\ImageDataRegex.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

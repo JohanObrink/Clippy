@@ -9,3 +9,4 @@ packages
 *.orig
 *.ncrunch*
 *Tests.mdf
+*Tests_log.ldf

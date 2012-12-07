@@ -8,7 +8,13 @@ namespace Clippy.Applications.AssetServer.Services
 {
     public class StaticResourceHandler : IResourceHandler
     {
-        public Response GetResource(string pathAndQuery)
+        /// <summary>
+        /// Processes the path and query, locates the corresponding file
+        /// and returns it
+        /// </summary>
+        /// <param name="pathAndQuery"></param>
+        /// <returns></returns>
+        public virtual Response GetResource(string pathAndQuery)
         {            
             var absolutePath = pathAndQuery.AbsoluteMediaPath();
 
@@ -18,9 +24,16 @@ namespace Clippy.Applications.AssetServer.Services
             return new GenericFileResponse(absolutePath, pathAndQuery.MimeType());
         }
 
-        public Response SaveResource(string path, HttpFile file)
+        /// <summary>
+        /// Returns a 403.
+        /// Override to use.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public virtual Response SaveResource(string path, HttpFile file)
         {
-            throw new NotImplementedException();
+            return new TextResponse("POST is not allowed") { StatusCode = HttpStatusCode.Forbidden };
         }
     }
 }
