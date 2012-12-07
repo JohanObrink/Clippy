@@ -8,3 +8,6 @@ _ReSharper.Clippy.Test
 packages
 *.orig
 *.ncrunch*
+*Tests.mdf
+*Tests_log.ldf
+*.nupkg

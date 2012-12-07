@@ -59,6 +59,10 @@
   <ItemGroup>
     <Compile Include="ActionResults\JsonOrJsonpResultTests.cs" />
     <Compile Include="Caching\MemoryCacheExtensions\Clear.cs" />
+    <Compile Include="Core\NumberParsingExtensions\ParseUInt.cs" />
+    <Compile Include="Core\NumberParsingExtensions\ParseUIntNullable.cs" />
+    <Compile Include="Core\NumberParsingExtensions\ParseULong.cs" />
+    <Compile Include="Core\NumberParsingExtensions\ParseULongNullable.cs" />
     <Compile Include="Core\NumberParsingExtensions\ParseInt.cs" />
     <Compile Include="Core\NumberParsingExtensions\ParseIntNullable.cs" />
     <Compile Include="Core\NumberParsingExtensions\ParseLong.cs" />
