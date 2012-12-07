@@ -35,6 +35,9 @@
     <Reference Include="Clippy">
       <HintPath>..\packages\Clippy.0.1.10.0\lib\net40\Clippy.dll</HintPath>
     </Reference>
+    <Reference Include="Clippy.Imaging">
+      <HintPath>..\packages\Clippy.Imaging.0.5.0.1\lib\net40\Clippy.Imaging.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.13.0\lib\net40\Nancy.dll</HintPath>
     </Reference>
@@ -50,7 +53,9 @@
       <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,9 +64,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\MediaExtensions.cs" />
     <Compile Include="FooModule.cs" />
+    <Compile Include="Infrastructure\AssetServerConfiguration.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ImageHandler.cs" />
+    <Compile Include="Services\IResourceHandler.cs" />
+    <Compile Include="Services\StaticResourceHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
