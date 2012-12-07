@@ -50,7 +50,9 @@
     <Compile Include="Saving\ImageSaver.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Clippy.Imaging.nuspec" />
+    <None Include="Clippy.Imaging.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
