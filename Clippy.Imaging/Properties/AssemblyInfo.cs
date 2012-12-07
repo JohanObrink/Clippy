@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Clippy.Imaging")]
 [assembly: AssemblyDescription("Helps with resizing images and converting between formats.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Markus Ullmark, Johan Öbrink")]
+[assembly: AssemblyCompany("24HR")]
 [assembly: AssemblyProduct("Clippy.Imaging")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.5.0.0")]
-[assembly: AssemblyFileVersion("0.5.0.0")]
+[assembly: AssemblyVersion("0.5.0.1")]
+[assembly: AssemblyFileVersion("0.5.0.1")]
