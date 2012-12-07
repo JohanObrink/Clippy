@@ -49,6 +49,7 @@
       <Link>AssemblyVersion.cs</Link>
     </Compile>
     <Compile Include="Caching\MemoryCacheExtensions.cs" />
+    <Compile Include="Core\NumberParsingExtensions.cs" />
     <Compile Include="Enumerable\LoopingExtensions.cs" />
     <Compile Include="Enumerable\UtilExtensions.cs" />
     <Compile Include="Enumerable\ValueExtensions.cs" />
