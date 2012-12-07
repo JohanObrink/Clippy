@@ -1,4 +1,5 @@
-﻿using Clippy.Applications.AssetServer.Models;
+﻿using Clippy.Core;
+using Clippy.Applications.AssetServer.Models;
 using System;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -11,25 +12,21 @@ namespace Clippy.Applications.AssetServer.Extensions
         {
             var data = new ImageRequestData
             {
-                Id = match.Groups["id"].Value
+                Id = match.Groups["id"].Value,
+                Width = match.Groups["width"].Value.ParseIntNullable(),
+                Height = match.Groups["height"].Value.ParseIntNullable(),
+                FileType = match.Groups["filetype"].Value
             };
 
             //path
             if (!string.IsNullOrWhiteSpace(match.Groups["path"].Value))
                 data.Path = match.Groups["path"].Value;
 
-            //size
-            if (!string.IsNullOrWhiteSpace(match.Groups["width"].Value))
-            {
-                
-            }
-
-            /*imageData.Groups["path"].Value.Should().Be("/foo");
-            imageData.Groups["width"].Value.Should().Be("300");
-            imageData.Groups["height"].Value.Should().Be("400");
-            imageData.Groups["id"].Value.Should().Be("image");
-            imageData.Groups["variant"].Value.Should().Be("darkside");
-            imageData.Groups["quality"].Value.Should().Be("40");
+            //variant
+            if (!string.IsNullOrWhiteSpace(match.Groups["variant"].Value))
+                data.Path = match.Groups["variant"].Value;
+            
+            /*imageData.Groups["quality"].Value.Should().Be("40");
             imageData.Groups["filetype"].Value.Should().Be("jpg");*/
 
             return data;

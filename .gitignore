@@ -10,3 +10,4 @@ packages
 *.ncrunch*
 *Tests.mdf
 *Tests_log.ldf
+*.nupkg

@@ -13,7 +13,7 @@ namespace Clippy.Applications.AssetServer.Test.UnitTests.Extensions.ImageRequest
         public void It_parses_groups_correctly()
         {
             var requestData =
-                Configuration.ImageDataRegex.Match("/foo/bar/400x300/image_darkside(45).jpg")
+                Configuration.ImageDataRegex.Match("/foo/bar/400x300/image__darkside(45).jpg")
                 .ToImageRequestData();
             
             requestData.Path.Should().Be("/foo/bar");
