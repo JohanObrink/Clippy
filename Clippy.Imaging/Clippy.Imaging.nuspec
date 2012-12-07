@@ -9,7 +9,7 @@
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.Drawing" targetFramework="net40" />
     </frameworkAssemblies>
-    <projectUrl>https://github.com/24hr/clippy</projectUrl>
+    <projectUrl>https://github.com/24hr/Clippy/tree/master/Clippy.Imaging</projectUrl>
     <tags>images resize</tags>
   </metadata>
 </package>
