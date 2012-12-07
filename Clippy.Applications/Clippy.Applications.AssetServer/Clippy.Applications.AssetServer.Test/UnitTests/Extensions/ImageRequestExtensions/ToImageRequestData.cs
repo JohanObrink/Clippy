@@ -21,7 +21,7 @@ namespace Clippy.Applications.AssetServer.Test.UnitTests.Extensions.ImageRequest
             requestData.Width.Should().Be(400);
             requestData.Id.Should().Be("image");
             requestData.Variant.Should().Be("darkside");
-            requestData.JpegQuality.Should().Be(45);
+            requestData.JpegQuality.Should().Be((uint)45);
             requestData.FileType.Should().Be("jpg");
         }
     }

@@ -15,6 +15,7 @@ namespace Clippy.Applications.AssetServer.Extensions
                 Id = match.Groups["id"].Value,
                 Width = match.Groups["width"].Value.ParseIntNullable(),
                 Height = match.Groups["height"].Value.ParseIntNullable(),
+                JpegQuality = match.Groups["quality"].Value.ParseUIntNullable(),
                 FileType = match.Groups["filetype"].Value
             };
 
@@ -24,10 +25,7 @@ namespace Clippy.Applications.AssetServer.Extensions
 
             //variant
             if (!string.IsNullOrWhiteSpace(match.Groups["variant"].Value))
-                data.Path = match.Groups["variant"].Value;
-            
-            /*imageData.Groups["quality"].Value.Should().Be("40");
-            imageData.Groups["filetype"].Value.Should().Be("jpg");*/
+                data.Variant = match.Groups["variant"].Value;
 
             return data;
         }
