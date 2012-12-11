@@ -25,18 +25,27 @@ namespace Clippy.Applications.AssetServer.Services
         /// <returns></returns>
         public override Response GetResource(string pathAndQuery)
         {
+            // evaluate url
             var match = AssetServerConfiguration.ImageDataRegex.Match(pathAndQuery);
 
+            // url malformed, throw
             if (!match.Success)
                 return new TextResponse("Bad Url Format") { StatusCode = HttpStatusCode.BadRequest };
 
             var imageData = match.ToImageRequestData();
-
             var original = imageData.OriginalPath();
+            
+            // if original is missing, throw 404
             if (!File.Exists(original))
                 throw new FileNotFoundException();
 
-            return new GenericFileResponse(original);
+            // if original is requested, return the file
+            if((!imageData.Width.HasValue || !imageData.Height.HasValue) && imageData.FileType == "png")
+                return new GenericFileResponse(original);
+
+            //var imageVersion = imageData.VersionPath();
+
+            return new Response();
         }
 
         /// <summary>
