@@ -1,5 +1,8 @@
 ﻿using Clippy.Applications.AssetServer.Infrastructure;
+using Clippy.Applications.AssetServer.Test.Specs.Infrastructure;
+using Nancy;
 using Nancy.Testing;
+using StructureMap;
 using System;
 using System.IO;
 using TechTalk.SpecFlow;
@@ -29,7 +32,7 @@ namespace Clippy.Applications.AssetServer.Test.Specs.Steps
         [BeforeScenario]
         public void SetupNancy()
         {
-            ScenarioContext.Current.Set<Browser>(new Browser(new Bootstrapper()));
+            ScenarioContext.Current.Set<Browser>(new Browser(new TestBootstrapper()));
         }
     }
 }

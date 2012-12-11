@@ -1,13 +1,12 @@
 ﻿using Clippy.Applications.AssetServer.Infrastructure;
-using Nancy.Testing;
-using System;
-using System.IO;
-using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
-using Xunit;
+using Clippy.Applications.AssetServer.Test.Helpers;
 using FluentAssertions;
 using Nancy;
+using Nancy.Testing;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using TechTalk.SpecFlow;
 
 namespace Clippy.Applications.AssetServer.Test.Specs.Steps
 {
@@ -22,7 +21,7 @@ namespace Clippy.Applications.AssetServer.Test.Specs.Steps
 
             File.Copy(original, target, true);
 
-            ScenarioContext.Current.Set<string>("theImage", original);
+            ScenarioContext.Current.Set<string>(original, "theImage");
         }
 
         [When(@"I visit ""(.*)""")]
@@ -40,6 +39,9 @@ namespace Clippy.Applications.AssetServer.Test.Specs.Steps
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
             var originalImage = Bitmap.FromFile(imagePath);
+            var resultImage = Bitmap.FromStream(response.Body.AsStream());
+
+            resultImage.GetBytes().Should().BeEquivalentTo(originalImage.GetBytes());
         }
     }
 }

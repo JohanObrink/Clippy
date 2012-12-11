@@ -3,6 +3,8 @@ using Clippy.Applications.AssetServer.Models;
 using System;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.IO;
+using Clippy.Applications.AssetServer.Infrastructure;
 
 namespace Clippy.Applications.AssetServer.Extensions
 {
@@ -28,6 +30,16 @@ namespace Clippy.Applications.AssetServer.Extensions
                 data.Variant = match.Groups["variant"].Value;
 
             return data;
+        }
+
+        public static string OriginalPath(this ImageRequestData data)
+        {
+            var sb = new StringBuilder();
+            if (!string.IsNullOrWhiteSpace(data.Path))
+                sb.Append(data.Path);
+            sb.AppendFormat("{0}.png", data.Id);
+
+            return Path.Combine(Path.GetFullPath(AssetServerConfiguration.MediaPath()), sb.ToString());
         }
 
         public static string ToUrl(this ImageRequestData data)

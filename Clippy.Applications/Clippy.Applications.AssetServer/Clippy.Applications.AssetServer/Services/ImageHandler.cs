@@ -3,6 +3,8 @@ using Nancy;
 using Nancy.Responses;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Clippy.Applications.AssetServer.Extensions;
 
 namespace Clippy.Applications.AssetServer.Services
 {
@@ -23,12 +25,18 @@ namespace Clippy.Applications.AssetServer.Services
         /// <returns></returns>
         public override Response GetResource(string pathAndQuery)
         {
-            var imageData = AssetServerConfiguration.ImageDataRegex.Match(pathAndQuery);
+            var match = AssetServerConfiguration.ImageDataRegex.Match(pathAndQuery);
 
-            if (!imageData.Success)
+            if (!match.Success)
                 return new TextResponse("Bad Url Format") { StatusCode = HttpStatusCode.BadRequest };
 
-            return new Response();
+            var imageData = match.ToImageRequestData();
+
+            var original = imageData.OriginalPath();
+            if (!File.Exists(original))
+                throw new FileNotFoundException();
+
+            return new GenericFileResponse(original);
         }
 
         /// <summary>

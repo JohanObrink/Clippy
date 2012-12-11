@@ -73,12 +73,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ImageExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specs\Features\GetImages.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GetImages.feature</DependentUpon>
     </Compile>
+    <Compile Include="Specs\Infrastructure\TestBootstrapper.cs" />
     <Compile Include="Specs\Steps\GetImagesSteps.cs" />
     <Compile Include="Specs\Steps\Setup.cs" />
     <Compile Include="UnitTests\Extensions\ImageRequestExtensions\ToImageRequestData.cs" />
