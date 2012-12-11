@@ -51,7 +51,7 @@ namespace Clippy.Applications.AssetServer.Infrastructure
         /// </summary>
         /// <param name="key">Configuration key name. Defaults to "MediaLocation"</param>
         /// <returns></returns>
-        public static string GetMediaPathFromConfiguration(string key = "MediaLocation")
+        public static string GetMediaPathFromConfiguration(string key = "MediaPath")
         {
             return ConfigurationManager.AppSettings[key];
         }

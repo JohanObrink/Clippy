@@ -1,11 +1,5 @@
-﻿using Clippy.Applications.AssetServer.Infrastructure;
-using Clippy.Applications.AssetServer.Services;
+﻿using Clippy.Applications.AssetServer.Services;
 using Nancy;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Clippy.Applications.AssetServer
 {
