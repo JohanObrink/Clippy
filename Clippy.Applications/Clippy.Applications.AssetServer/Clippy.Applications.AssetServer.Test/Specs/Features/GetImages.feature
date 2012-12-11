@@ -4,6 +4,6 @@
 	I want to be able to auto scale and compress from uri
 
 Scenario: Get original image from root
-	Given There is an image called "image.png"
-	When I visit "image.png"
-	Then I should see "image.png"
+	Given There is an image called "/image.png"
+	When I visit "/image.png"
+	Then I should see the image

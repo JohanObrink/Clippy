@@ -1,7 +1,9 @@
 ﻿using Clippy.Applications.AssetServer.Infrastructure;
+using Nancy.Testing;
 using System;
 using System.IO;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 
 namespace Clippy.Applications.AssetServer.Test.Specs.Steps
 {
@@ -22,6 +24,12 @@ namespace Clippy.Applications.AssetServer.Test.Specs.Steps
             var folder = AssetServerConfiguration.MediaPath();
             if (Directory.Exists(folder))
                 Directory.Delete(folder, true);
+        }
+
+        [BeforeScenario]
+        public void SetupNancy()
+        {
+            ScenarioContext.Current.Set<Browser>(new Browser(new Bootstrapper()));
         }
     }
 }
