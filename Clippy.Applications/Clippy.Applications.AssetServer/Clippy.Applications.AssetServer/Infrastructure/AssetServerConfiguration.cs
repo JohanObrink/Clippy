@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nancy;
+using System;
 using System.Configuration;
 using System.Text.RegularExpressions;
 
@@ -9,6 +10,8 @@ namespace Clippy.Applications.AssetServer.Infrastructure
         #region properties
 
         private static Func<string> mediaPath = () => GetMediaPathFromConfiguration();
+
+        private static Regex metaRequestRegex = new Regex("[?&]meta([&=]|$)", RegexOptions.Compiled);
         
         /// <summary>
         /// MediaPath resolver. Defaults to GetMediaPathFromConfiguration
@@ -32,6 +35,13 @@ namespace Clippy.Applications.AssetServer.Infrastructure
             set { imageSizeRegex = value; }
         }
 
+        private static Func<Request, bool> isMetaRequest = DefaultIsMetaRequest;
+        public static Func<Request, bool> IsMetaRequest
+        {
+            get { return isMetaRequest; }
+            set { isMetaRequest = value; }
+        }
+
         #endregion
 
         #region defaults
@@ -44,6 +54,11 @@ namespace Clippy.Applications.AssetServer.Infrastructure
         public static string GetMediaPathFromConfiguration(string key = "MediaLocation")
         {
             return ConfigurationManager.AppSettings[key];
+        }
+
+        public static bool DefaultIsMetaRequest(Request request)
+        {
+            return metaRequestRegex.IsMatch(request.Url.Query);
         }
 
         #endregion

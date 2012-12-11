@@ -12,7 +12,7 @@ namespace Clippy.Applications.AssetServer
     {
         public FooModule()
         {
-            Get["/"] = x =>
+            Get["/foo"] = x =>
             {
                 return Response.AsJson(new { foo = "foo", bar = 1 });
             };

@@ -278,5 +278,28 @@ namespace Clippy.Applications.AssetServer.Test.UnitTests.Infrastructure.AssetSer
             imageData.Groups["quality"].Value.Should().Be("40");
             imageData.Groups["filetype"].Value.Should().Be("jpg");
         }
+
+        [Fact]
+        public void It_finds_a_scaled_jpeg_image_variant_with_quality_in_a_sub_sub_directory()
+        {
+            var imageData = Configuration.ImageDataRegex.Match("/foo/bar/300x400/image__darkside(40).jpg");
+
+            imageData.Success.Should().BeTrue();
+            imageData.Groups["path"].Value.Should().Be("/foo/bar");
+            imageData.Groups["width"].Value.Should().Be("300");
+            imageData.Groups["height"].Value.Should().Be("400");
+            imageData.Groups["id"].Value.Should().Be("image");
+            imageData.Groups["variant"].Value.Should().Be("darkside");
+            imageData.Groups["quality"].Value.Should().Be("40");
+            imageData.Groups["filetype"].Value.Should().Be("jpg");
+        }
+
+        [Fact]
+        public void It_returns_false_for_malformed_url()
+        {
+            var imageData = Configuration.ImageDataRegex.Match("../foo/bar/300x400/image__darkside(40).jpg");
+
+            imageData.Success.Should().BeFalse();
+        }
     }
 }

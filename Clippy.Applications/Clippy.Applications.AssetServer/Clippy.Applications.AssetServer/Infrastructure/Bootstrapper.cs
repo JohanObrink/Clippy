@@ -1,14 +1,22 @@
-﻿using Nancy.Bootstrapper;
+﻿using Clippy.Applications.AssetServer.Services;
+using Nancy.Bootstrapper;
 using Nancy.Bootstrappers.StructureMap;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Clippy.Applications.AssetServer.Infrastructure
 {
     public class Bootstrapper : StructureMapNancyBootstrapper
     {
+        protected override void ConfigureApplicationContainer(StructureMap.IContainer existingContainer)
+        {
+            existingContainer.Configure(x =>
+            {
+                x.Scan(y =>
+                {
+                    y.AssemblyContainingType<IResourceHandler>();
+                    y.WithDefaultConventions();
+                });
+            });
+        }
     }
 }

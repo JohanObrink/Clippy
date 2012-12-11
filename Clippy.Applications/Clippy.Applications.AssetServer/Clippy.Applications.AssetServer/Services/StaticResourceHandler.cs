@@ -6,7 +6,14 @@ using Nancy.Responses;
 
 namespace Clippy.Applications.AssetServer.Services
 {
-    public class StaticResourceHandler : IResourceHandler
+    /// <summary>
+    /// This is only for IOC convenience
+    /// </summary>
+    public interface IStaticResourceHandler : IResourceHandler
+    {
+    }
+
+    public class StaticResourceHandler : IStaticResourceHandler
     {
         /// <summary>
         /// Processes the path and query, locates the corresponding file

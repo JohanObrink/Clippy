@@ -2,13 +2,20 @@
 using Nancy;
 using Nancy.Responses;
 using System;
+using System.Collections.Generic;
 
 namespace Clippy.Applications.AssetServer.Services
 {
-    public class ImageHandler : StaticResourceHandler
+    /// <summary>
+    /// This is only for IOC convenience
+    /// </summary>
+    public interface IImageHandler : IResourceHandler
     {
-        
+    }
 
+
+    public class ImageHandler : StaticResourceHandler, IImageHandler
+    {
         /// <summary>
         /// Processes the path and query and returns the corresponding image resource
         /// </summary>

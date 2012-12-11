@@ -1,5 +1,6 @@
 ﻿using Nancy;
 using System;
+using System.Collections.Generic;
 
 namespace Clippy.Applications.AssetServer.Services
 {
