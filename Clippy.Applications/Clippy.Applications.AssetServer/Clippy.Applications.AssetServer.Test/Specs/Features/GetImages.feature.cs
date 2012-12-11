@@ -91,6 +91,42 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Xunit.FactAttribute()]
+        [Xunit.TraitAttribute("FeatureTitle", "GetImages")]
+        [Xunit.TraitAttribute("Description", "Get original image from sub folder")]
+        public virtual void GetOriginalImageFromSubFolder()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get original image from sub folder", ((string[])(null)));
+#line 11
+this.ScenarioSetup(scenarioInfo);
+#line 12
+ testRunner.Given("There is an image called \"/foo/bar/image.png\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 13
+ testRunner.When("I visit \"/foo/bar/image.png\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 14
+ testRunner.Then("I should see the image", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute()]
+        [Xunit.TraitAttribute("FeatureTitle", "GetImages")]
+        [Xunit.TraitAttribute("Description", "Get a rescaled image from root")]
+        public virtual void GetARescaledImageFromRoot()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get a rescaled image from root", ((string[])(null)));
+#line 16
+this.ScenarioSetup(scenarioInfo);
+#line 17
+ testRunner.Given("There is an image called \"/image.png\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 18
+ testRunner.When("I visit \"/125x182/image.png\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 19
+ testRunner.Then("I should see the image rescaled to 125x182", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

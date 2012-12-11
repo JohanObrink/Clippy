@@ -1,5 +1,6 @@
 ﻿using Clippy.Applications.AssetServer.Infrastructure;
 using Clippy.Applications.AssetServer.Test.Helpers;
+using Clippy.Imaging;
 using FluentAssertions;
 using Nancy;
 using Nancy.Testing;
@@ -17,7 +18,11 @@ namespace Clippy.Applications.AssetServer.Test.Specs.Steps
         public void GivenThereIsAnImageCalled(string imagePath)
         {
             var original = Path.GetFullPath("./assets/clippy.png");
-            var target = Path.Combine(AssetServerConfiguration.MediaPath(), imagePath.TrimStart('/'));
+            var target = Path.Combine(Path.GetFullPath(AssetServerConfiguration.MediaPath()), imagePath.TrimStart('/').Replace("/", "\\"));
+            var targetDir = Directory.GetParent(target);
+
+            if (!targetDir.Exists)
+                targetDir.Create();
 
             File.Copy(original, target, true);
 
@@ -42,6 +47,30 @@ namespace Clippy.Applications.AssetServer.Test.Specs.Steps
             var resultImage = Bitmap.FromStream(response.Body.AsStream());
 
             resultImage.GetBytes().Should().BeEquivalentTo(originalImage.GetBytes());
+        }
+
+        [Then(@"I should see the image rescaled to (.*)")]
+        public void ThenIShouldSeeTheImageRescaledTo(string widthHeight)
+        {
+            var wh = widthHeight.Split('x');
+            var width = int.Parse(wh[0]);
+            var height = int.Parse(wh[1]);
+
+            var imagePath = ScenarioContext.Current.Get<string>("theImage");
+            var response = ScenarioContext.Current.Get<BrowserResponse>();
+
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var resizedImage = new ResizeImage(Bitmap.FromFile(imagePath) as Bitmap).Constrain().ToSize(width, height).Save();
+            var resultImage = Bitmap.FromStream(response.Body.AsStream());
+
+            resizedImage.Width.Should().Be(width);
+            resizedImage.Height.Should().Be(height);
+
+            resultImage.Width.Should().Be(width);
+            resultImage.Height.Should().Be(height);
+
+            resultImage.GetBytes().Should().BeEquivalentTo(resizedImage.GetBytes());
         }
     }
 }

@@ -36,10 +36,10 @@ namespace Clippy.Applications.AssetServer.Extensions
         {
             var sb = new StringBuilder();
             if (!string.IsNullOrWhiteSpace(data.Path))
-                sb.Append(data.Path);
+                sb.Append(string.Format("{0}/", data.Path));
             sb.AppendFormat("{0}.png", data.Id);
 
-            return Path.Combine(Path.GetFullPath(AssetServerConfiguration.MediaPath()), sb.ToString());
+            return Path.Combine(Path.GetFullPath(AssetServerConfiguration.MediaPath()), sb.ToString().TrimStart('/').Replace("/", "\\"));
         }
 
         public static string ToUrl(this ImageRequestData data)
