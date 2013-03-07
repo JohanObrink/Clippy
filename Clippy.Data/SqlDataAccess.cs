@@ -37,14 +37,7 @@ namespace Clippy.Data
                     {
                         conn.Open();
                         var dataSet = new DataSet();
-                        try
-                        {
-                            adapter.Fill(dataSet);
-                        }
-                        finally
-                        {
-                            conn.Close();
-                        }
+						adapter.Fill(dataSet);
 
                         return dataSet.CreateDataReader();
                     }
@@ -61,7 +54,18 @@ namespace Clippy.Data
         /// <returns></returns>
         public int ExecuteNonQuery(string command, object parameters = null, CommandType commandType = CommandType.StoredProcedure)
         {
-            throw new NotImplementedException();
+			using (var conn = connectionProvider.Invoke())
+			{
+				using (var cmd = new SqlCommand(command, conn))
+				{
+					cmd.CommandType = commandType;
+					if (parameters != null)
+						cmd.AddParameters(parameters);
+
+					conn.Open();
+					return cmd.ExecuteNonQuery();
+				}
+			}
         }
 
         /// <summary>
@@ -73,7 +77,18 @@ namespace Clippy.Data
         /// <returns></returns>
         public object ExecuteScalar(string command, object parameters = null, CommandType commandType = CommandType.StoredProcedure)
         {
-            throw new NotImplementedException();
+			using (var conn = connectionProvider.Invoke())
+			{
+				using (var cmd = new SqlCommand(command, conn))
+				{
+					cmd.CommandType = commandType;
+					if (parameters != null)
+						cmd.AddParameters(parameters);
+
+					conn.Open();
+					return cmd.ExecuteScalar();
+				}
+			}
         }
 
         /// <summary>
@@ -86,7 +101,7 @@ namespace Clippy.Data
         /// <returns></returns>
         public T ExecuteScalar<T>(string command, object parameters = null, CommandType commandType = CommandType.StoredProcedure)
         {
-            throw new NotImplementedException();
+			return (T)ExecuteScalar(command, parameters, commandType);
         }
     }
 }
