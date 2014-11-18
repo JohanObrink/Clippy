@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="DataSetExtensionsTest.cs" />
     <Compile Include="DbCommandExtensionsTest.cs" />
+    <Compile Include="DataReaderExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
