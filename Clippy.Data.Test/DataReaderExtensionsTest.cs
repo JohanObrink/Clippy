@@ -51,7 +51,7 @@ namespace Clippy.Data.Test
             dt.AddData(null, null, null, null);
             var reader = ds.CreateDataReader();
             reader.Read();
-            Assert.Throws<ArgumentException>(() => reader.Value<int>(0));
+            Assert.Throws<ArgumentException>(() => reader.Value<int>(0)).Message.Should().Be("Column 0 (Int32) cannot be cast to a Int32 with value null");
             Assert.Throws<ArgumentException>(() => reader.Value<DateTime>(2));
             Assert.Throws<ArgumentException>(() => reader.Value<bool>(3));
         }

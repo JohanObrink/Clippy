@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataRowExtensionsTest.cs" />
     <Compile Include="DataSetExtensionsTest.cs" />
     <Compile Include="DbCommandExtensionsTest.cs" />
     <Compile Include="DataReaderExtensionsTest.cs" />

@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataReaderExtensions.cs" />
+    <Compile Include="DataRowExtensions.cs" />
     <Compile Include="DataSetExtensions.cs" />
     <Compile Include="DbCommandExtensions.cs" />
     <Compile Include="IDataAccess.cs" />
