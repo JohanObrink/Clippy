@@ -52,5 +52,38 @@ namespace Clippy.Data.Test
             Assert.Throws<ArgumentException>(() => row.Value<DateTime>(2));
             Assert.Throws<ArgumentException>(() => row.Value<bool>(3));
         }
+
+
+        [Fact]
+        public void It_can_read_non_nullable_values_with_name()
+        {
+            dt.AddData(1, "Johan", new DateTime(1973, 4, 16), true);
+            var row = dt.Rows[0];
+            row.Value<int>("id").Should().Be(1);
+            row.Value<string>("name").Should().Be("Johan");
+            row.Value<DateTime>("birth").Should().Be(new DateTime(1973, 4, 16));
+            row.Value<bool>("alive").Should().BeTrue();
+        }
+
+        [Fact]
+        public void It_can_read_nullable_values_with_name()
+        {
+            dt.AddData(null, null, null, null);
+            var row = dt.Rows[0];
+            row.Value<int?>("id").Should().NotHaveValue();
+            row.Value<string>("name").Should().BeNull();
+            row.Value<DateTime?>("birth").Should().NotHaveValue();
+            row.Value<bool?>("alive").Should().NotHaveValue();
+        }
+
+        [Fact]
+        public void It_throws_if_null_is_found_for_non_nullable_type_with_name()
+        {
+            dt.AddData(null, null, null, null);
+            var row = dt.Rows[0];
+            Assert.Throws<ArgumentException>(() => row.Value<int>("id")).Message.Should().Be("Column \"id\" (Int32) cannot be cast to a Int32 with value null");
+            Assert.Throws<ArgumentException>(() => row.Value<DateTime>("birth"));
+            Assert.Throws<ArgumentException>(() => row.Value<bool>("alive"));
+        }
     }
 }
